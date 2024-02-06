@@ -78,8 +78,7 @@ public class Empresa {
 	
 	//Devuelve la info de la empresa y todos los empleados;
 	public String toString() {
-		f
-		return (nombre + "\n" +  for
+		return ("Nombre: " + nombre + "\n" + );
 		
 	}
 	
