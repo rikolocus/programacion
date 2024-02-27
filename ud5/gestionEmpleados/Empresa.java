@@ -2,6 +2,8 @@ package ud5.gestionEmpleados;
 
 import java.util.*;
 
+
+
 public class Empresa {
 	
 	//Variables necesarias: constante, nombre empresa, array de la plantilla, numEmpleados;
@@ -28,8 +30,12 @@ public class Empresa {
 	public void contratar (Empleado e) throws PlantillaCompletaException {
 
 		if (numEmpleado<MAX_EMPLEADOS) {
-			this.plantilla[numEmpleado] = e;
-			numEmpleado++;
+			if (!e.existeDNI(this)) {
+	            plantilla[numEmpleado] = e;
+	            numEmpleado++;
+	        } else {
+	            System.out.println("Error: El DNI ya está asociado a otro empleado.");
+	        }
 		} else {
 			throw new PlantillaCompletaException();
 		}
@@ -70,23 +76,46 @@ public class Empresa {
 	public void subirTrienio (double porcentaje) {
 		
 		for (int i=0; i<MAX_EMPLEADOS; i++) {
-			if (plantilla[i].antiguedad()==3) {
+			if (plantilla[i]!=null &&plantilla[i].antiguedad()==3) {
 				plantilla[i].incrementarSueldo(porcentaje);
 			}
 		}
 	}
 	
 	//Devuelve la info de la empresa y todos los empleados;
+	@Override
 	public String toString() {
-		return ("Nombre: " + nombre + "\n" + );
 		
+		String info = ("DATOS DE LA EMPRESA\n\nNombre: " + nombre + "\n\nPLANTILLA\n\n");
+		
+		for (int i = 0; i < numEmpleado; i++) {
+		    if (plantilla[i] != null) {
+		      info += plantilla[i].toString() + "\n";
+		    }
+		}
+		return info;
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PlantillaCompletaException {
 		// TODO Auto-generated method stub
 		
+		Empresa laEstacion = new Empresa("La Estación");
+		Empleado empleado1 = new Empleado("Juan Pérez", "12345668A", 2020, 24000);
+		Empleado empleado2 = new Empleado("Juan Pérez", "12345658A", 2020, 24000);
+		Empleado empleado3 = new Empleado("Juan Pérez", "12345648A", 2020, 24000);
+		Empleado empleado4 = new Empleado("Juan Pérez", "12345638A", 2020, 24000);
+		Empleado empleado5 = new Empleado("Juan Pérez", "12345628A", 2020, 24000);
+		Empleado empleado6 = new Empleado("Juan Pérez", "12345618A", 2020, 24000);
 		
+		laEstacion.contratar(empleado1);
+		laEstacion.contratar(empleado2);
+		laEstacion.contratar(empleado3);
+		laEstacion.contratar(empleado4);
+		laEstacion.contratar(empleado5);
+		laEstacion.contratar(empleado6);
+		laEstacion.subirTrienio(3);
+		System.out.println(laEstacion.toString());
 
 	}
 

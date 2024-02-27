@@ -8,15 +8,19 @@ public class TestEmpleado {
 		Empleado empleado1 = new Empleado("Paco Lodeiro Carvajal", "12345678A", 2007, 20000);
 		Empleado empleado2 = new Empleado("Roberto Lobato Muñeco", "87654321A", 2010, 15000);
 		
+		System.out.print(empleado2);
 		empleado2.incrementarSueldo(20);
 		System.out.print(empleado2);
 		
+		System.out.print(empleado1);
 		empleado1.incrementarSueldo(10);
 		System.out.print(empleado1);
 		
 		System.out.printf("El irpf correspondiente al empleado1 es: %s%%\n", Empleado.calcularIRPF(empleado1.getSueldoBrutoAnual())*100);
 		System.out.printf("El irpf correspondiente al empleado2 es: %s%%\n", Empleado.calcularIRPF(empleado2.getSueldoBrutoAnual())*100);
 		
+		System.out.print(empleado1);
+		System.out.print(empleado2);
 	}
 
 }

@@ -58,8 +58,7 @@ public class Empleado {
 	}
 	
 	//COMPROBAR DNIS
-	@Override
-	public boolean equals(Object o) {
+	public boolean existeDNI(Object o) {
 		//Verifica el objeto creado es igual al objeto que se comprueba
 		if (o == this) {
 			return true;
