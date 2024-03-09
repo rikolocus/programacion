@@ -35,10 +35,5 @@ public class Actividad02 {
 		
 		//Muestra datos
 		System.out.printf("Hay un total de %s personas en la cola\nEl precio total es de %s euros\n%s", personasAleatoria,precioTotal,edades);
-		
-		
-		
-
 	}
-
 }
